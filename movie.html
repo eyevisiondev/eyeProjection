@@ -1,0 +1,307 @@
+<html>
+
+    <head>
+    <title>EyeProjection</title>
+    <link
+    id="favicon"
+    rel="shortcut icon"
+    href="http://34.95.255.131/favicon.png?v=2"
+    type=
+    "image/png"
+    />
+</head>
+
+
+<body style="background-color: black;">
+    <video id="video" muted src="" controls autoplay=""  style="width: 100%;height: 100%;">
+        
+    </vide>
+    
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="node_modules/socket.io-client/dist/socket.io.js" ></script>
+<script>
+    
+    
+    var video = 0;
+    var token = "";
+    var project = "";
+    $(document).ready(function () {
+        mKeyF11();
+
+
+        token = getUrlVars()['t'];
+        project = parseInt(getUrlVars()['p']);
+
+        if(project!=1 && project!=2 && project!=3){
+            alert('É necessário atribuir um projeto para o usuário respectivo!');
+            return;
+        }
+
+     //   $('#video').prop('muted', false);
+      //  if(project==2) {
+          //  $('#video').prop('muted', false);
+    //    }
+
+
+
+
+        setTimeout(function() {
+            if(project==1) {
+                $('#video').attr('loop', true);
+                $('#video').attr('src', 'loop.mp4').trigger('play');
+                $('#video').attr({'autoplay':'true'});
+            }else  if(project==2) {
+                //
+                $('#video').attr('loop', true);
+                $('#video').attr('src', 'loop2.mp4').trigger('play');
+                $('#video').attr({'autoplay':'true'});
+                //
+            }else  if(project==3) {
+                //
+                $('#video').attr('loop', true);
+        
+                $('#video').attr('src', 'loop3.mp4').trigger('play');
+                $('#video').attr({'autoplay':'true'});
+                //
+            }
+        }, 1000);
+    
+       
+    });
+    
+    jQuery.support.cors = true;
+    
+    
+    
+    const socket = io('http://34.95.255.131:8000');
+    
+    
+    socket.emit("join", 'New User');
+    
+    socket.on("message", function(data) {
+    
+         if(data.token == token){
+             value = parseInt(data.movie);
+
+             console.log(value);
+             if(project==1)
+                 switchVideoNestle(value);
+             else if(project==2)
+                 switchVideoEye(value);
+            else if(project==3)
+                 switchVideoVaticano(value);
+         }
+            
+    });
+
+
+
+
+    function switchVideoVaticano(value) {
+        if(value!=0)
+            $('#video').removeAttr("loop");
+
+
+
+            switch (value) {
+                case 0:
+
+                        $('#video').attr('loop', true);
+                        $('#video').attr('src', 'loop3.mp4').trigger('play');
+                    
+                    break;
+
+                case 1:
+                    $('#video').attr('src', 'cpf.mp4').trigger('play');
+                    break;
+
+                case 2:
+                    $('#video').attr('src', 'nome.mp4').trigger('play');
+                    break;
+
+                case 3:
+                    $('#video').attr('src', 'roteiro.mp4').trigger('play');
+                    break;
+            }
+
+
+        video = value;
+
+    }
+
+
+    function switchVideoEye(value) {
+        if(value!=0)
+            $('#video').removeAttr("loop");
+
+
+
+            switch (value) {
+                case 0:
+                  //  if(video!=value) {
+                        $('#video').attr('loop', true);
+                        $('#video').attr('src', 'loop2.mp4').trigger('play');
+                   // }
+                    break;
+
+                case 1:
+                //    if(video!=value) {
+                         $('#video').attr('src', 'robot_action.mp4').trigger('play');
+                //    }
+                    break;
+            }
+
+
+        video = value;
+
+    }
+        
+    function switchVideoNestle(value) {
+        
+        if(value!=1){
+            $('#video').removeAttr("loop");
+        }
+        
+        switch (value ) {
+            case 0:
+            $('#video').attr('src', '').trigger('play');
+            break;
+            
+            case 1: //1
+            $('#video').attr('loop', true);
+            $('#video').attr('src', 'loop.mp4').trigger('play');
+            break;
+            
+            case 2: //2
+            $('#video').attr('src', 'Intro_ola_tudo_bem_voce_poderia.mp4').trigger('play');
+            break;
+            
+            case 3: //3
+            $('#video').attr('src', 'seja_bem_vindo.mp4').trigger('play');
+            
+            break;
+            case 4: //4
+            $('#video').attr('src', 'e_como_voce_e_cliente_frequente.mp4').trigger('play');
+            break;
+            
+            case 5: //5
+            $('#video').attr('src', 'esse_e_o_novo_Ninho_fort_mais_com_lata.mp4').trigger('play');
+            break;
+            
+            case 6: //6
+            $('#video').attr('src', 'uma_alimentacao_saudavel_e_o_primeiro.mp4').trigger('play');
+            break;
+            
+            case 7: //7
+            $('#video').attr('src', 'entao_aproveite_essa_novidade.mp4').trigger('play');
+            break;
+            
+            case 8: //8
+            $('#video').attr('src', 'gostaria_de_deixar_o_seu_email.mp4').trigger('play');
+            break;
+            
+            case 9: //9
+            $('#video').attr('src', 'muito_obrigada_e_um_prazer_ter.mp4').trigger('play');
+            break;
+            
+            case 10: //10
+            $('#video').attr('src', 'e_nao_esqueca_de_digitar_seu_cpf.mp4').trigger('play');
+            break;
+            
+            case 11: //11
+            $('#video').attr('src', 'ha_tambem_da_para_baixar_o_app.mp4').trigger('play');
+            break;
+            
+            case 12: //12
+            $('#video').attr('src', 'muito_obrigada_pela_sua_atencao.mp4').trigger('play');
+            break;
+            
+            case 13: //13
+            $('#video').attr('src', 'ate_mais.mp4').trigger('play');
+            break;
+            
+            case 14: //14
+            $('#video').attr('src', 'notamos_que_voce_ainda_nao_aproveita.mp4').trigger('play');
+            break;
+            
+            case 15: //15
+            $('#video').attr('src', 'gostaria_de_cadastrar_no_clube.mp4').trigger('play');
+            break;
+            
+            case 16: //16
+            $('#video').attr('src', 'que_bom_digite_seu_email.mp4').trigger('play');
+            break;
+            
+            case 17: //17
+            $('#video').attr('src', 'muito_bem_completo.mp4').trigger('play');
+            break;
+            
+            case 18: //18
+            $('#video').attr('src', 'agora_eu_gostaria_de_te_apesentar_um_novo_produto.mp4').trigger('play');
+            break;
+            
+            case 19: //19
+            $('#video').attr('src', 'que_pena_eu_gostaria_de_ter_voce_no_nosso_clube.mp4').trigger('play');
+            break;
+            
+            case 20: //20
+            $('#video').attr('src', 'mas_mesmo_assim_eu_gostaria.mp4').trigger('play');
+            break;
+            
+            case 21: //21
+            $('#video').attr('src', 'que_bom_digite_seu_email_apenas.mp4').trigger('play');
+            break;
+            
+            case 22: //22
+            $('#video').attr('src', 'recomendo_voce_se_cadastrar.mp4').trigger('play');
+            break;
+            
+            
+            
+        }
+    }
+    
+    function mKeyF11() {
+        var e = new Event('keypress');
+        e.which = 122; // Character F11 equivalent.
+        e.altKey = false;
+        e.ctrlKey = false;
+        e.shiftKey = false;
+        e.metaKey = false;
+        e.bubbles = true;
+        document.dispatchEvent(e);
+    }
+    
+    function openFullscreen(myVideo) {
+        console.log("hitting")
+        var elem = myVideo
+        console.log(elem)
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+            elem.msRequestFullscreen();
+        }
+    }
+
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+        function(m,key,value) {
+        vars[key] = value;
+        });
+        return vars;
+    } 
+        
+</script>
+</body>
+</html>
