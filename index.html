@@ -12,13 +12,13 @@
     <link
     id="favicon"
     rel="shortcut icon"
-    href="http://34.95.255.131/favicon.png?v=2"
+    href="http://34.95.175.71/favicon.png?v=2"
     type="image/png"
     />
     <!-- Bootstrap 3.3.6 -->
     <link
     rel="stylesheet"
-    href="http://34.95.255.131/bower_components/admin-lte/bootstrap/css/bootstrap.min.css"
+    href="http://34.95.175.71/bower_components/admin-lte/bootstrap/css/bootstrap.min.css"
     />
     <!-- Font Awesome -->
     <link
@@ -33,15 +33,15 @@
     <!-- Theme style -->
     <link
     rel="stylesheet"
-    href="http://34.95.255.131/bower_components/admin-lte/dist/css/AdminLTE.min.css"
+    href="http://34.95.175.71/bower_components/admin-lte/dist/css/AdminLTE.min.css"
     />
     <!-- iCheck -->
     <link
     rel="stylesheet"
-    href="http://34.95.255.131/bower_components/admin-lte/plugins/iCheck/square/blue.css"
+    href="http://34.95.175.71/bower_components/admin-lte/plugins/iCheck/square/blue.css"
     />
     <!-- Personalizado -->
-    <link rel="stylesheet" href="http://34.95.255.131/css/mainstyle.css" />
+    <link rel="stylesheet" href="http://34.95.175.71/css/mainstyle.css" />
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -153,11 +153,11 @@
 </div>
 <!-- REQUIRED JS SCRIPTS -->
 <!-- jQuery 2.2.3 -->
-<script src="http://34.95.255.131/bower_components/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="http://34.95.175.71/bower_components/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="http://34.95.255.131/bower_components/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://34.95.175.71/bower_components/admin-lte/bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="http://34.95.255.131/bower_components/admin-lte/plugins/iCheck/icheck.min.js"></script>
+<script src="http://34.95.175.71/bower_components/admin-lte/plugins/iCheck/icheck.min.js"></script>
 
 <script
 src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -198,7 +198,7 @@ crossorigin="anonymous"></script>
         $('#errorMsg').hide();
         if($("#email").val() != '' && $("#password").val()!=''){
             
-            $.post('http://34.95.255.131/api/loginAPI', $.param($('#formLogin').serializeArray()), function (data) {
+            $.post('http://34.95.175.71/api/loginAPI', $.param($('#formLogin').serializeArray()), function (data) {
                 data = $.parseJSON(data);
                 if(data!="false" && data!="permission"){
                     window.location.href = 'movie.html?t='+data.token+'&p='+data.tipo_projeto
